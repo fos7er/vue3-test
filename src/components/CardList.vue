@@ -1,6 +1,7 @@
 <template>
   <v-container>
     {{selectedSpecialization}}
+    {{sorted}}
     <Controls v-model="selectedSpecialization"/>
     <v-row>
       <v-col v-for="item in cards" cols="12" sm="6" md="4" xl="3" >
@@ -26,11 +27,15 @@
 
   //region filer
   const sorted = computed(() => {
-    //const result : {[key:number]: number[]} = {}
+    const result = {}
 
-    store.list.forEach((item: doctor) => {
-      item.specializationList.forEach((item: specialization) => {})
+    store.list.forEach((doctor: doctor, index: number) => {
+      doctor.specializationList.forEach((item: specialization) => {
+        result[item.id] ? result[item.id].push(index) : result[item.id] = [index]
+      })
     })
+
+    return new Map(Object.entries(result))
   })
   //endregion
 
