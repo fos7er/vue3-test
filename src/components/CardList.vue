@@ -45,12 +45,14 @@
     if (selectedSpecialization.value) {
       const result: doctor[] = []
       const indexes: number[] = sorted.value.get(selectedSpecialization.value)
+
       if (indexes && indexes.length) {
         indexes.forEach(index => {
           result.push(cards.value[index])
         })
-        return result
       }
+
+      return result
     } else {
       return cards.value
     }
