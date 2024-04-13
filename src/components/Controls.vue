@@ -16,13 +16,13 @@
 </template>
 
 <script setup lang="ts">
-  import type { specialisation } from '../types'
+  import type { specialization } from '../types'
   import { computed, ComputedRef } from 'vue'
-  import { useSpecialisationStore } from '@/store/specialisation'
+  import { useSpecializationStore } from '@/store/specialization'
 
-  const store = useSpecialisationStore()
+  const store = useSpecializationStore()
   // вот тут не понял почему IDE не подсвечивает правильный тип пришлось еще раз типизировать
-  const buttons: ComputedRef<specialisation[]> = computed(() => store.list)
+  const buttons: ComputedRef<specialization[]> = computed(() => store.list)
   const { getList } = store
   getList()
 

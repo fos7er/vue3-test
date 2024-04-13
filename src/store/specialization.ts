@@ -1,18 +1,18 @@
 import file from '@/mocks/specialization.json'
 import type { Ref } from 'vue'
-import type { specialisation } from '../types'
+import type { specialization } from '../types'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-export const useSpecialisationStore = defineStore('specialization', () => {
+export const useSpecializationStore = defineStore('specialization', () => {
 
-  const list: Ref<specialisation[]> = ref([])
+  const list: Ref<specialization[]> = ref([])
 
   async function getList () {
     list.value = await get()
   }
 
-  function get (): Promise<specialisation[]> {
+  function get (): Promise<specialization[]> {
     return new Promise(resolve => {
       setTimeout(() => resolve(file), 100)
     })

@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    {{selectedSpecialisation}}
-    <Controls v-model="selectedSpecialisation"/>
+    {{selectedSpecialization}}
+    <Controls v-model="selectedSpecialization"/>
     <v-row>
       <v-col v-for="item in cards" cols="12" sm="6" md="4" xl="3" >
         <Card :item="item"/>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-  import type { doctor } from '../types'
+  import type { doctor, specialization } from '../types'
   import { computed, ComputedRef } from 'vue'
   import { ref } from 'vue'
   import { useDoctorStore } from '@/store/doctor'
@@ -24,7 +24,16 @@
   getList()
   //endregion
 
+  //region filer
+  const sorted = computed(() => {
+    //const result : {[key:number]: number[]} = {}
+
+    store.list.forEach((item: doctor) => {
+      item.specializationList.forEach((item: specialization) => {})
+    })
+  })
+  //endregion
 
 
-  const selectedSpecialisation = ref(null)
+  const selectedSpecialization = ref(null)
 </script>

@@ -1,4 +1,4 @@
-export interface specialisation {
+export interface specialization {
   id: number
   name?: string
 }
@@ -8,5 +8,5 @@ export interface doctor {
   lastName: string
   firstName: string
   middleName: string
-  specializationList: specialisation[]
+  specializationList: specialization[]
 }
