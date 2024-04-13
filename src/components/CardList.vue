@@ -20,7 +20,7 @@
 
   //region getList
   const store = useDoctorStore()
-  // вот тут не понял почему IDE не подсвечивает правильный тип пришлось еще раз типизировать
+  // вот тут не понял почему IDE не подсвечивает правильный тип, пришлось еще раз типизировать
   const cards: ComputedRef<doctor[]> = computed(() => store.list)
   const { getList } = store
   getList()
@@ -57,7 +57,6 @@
       return cards.value
     }
   })
-
   //endregion
 
   const availableSpecializations: ComputedRef<number[]> = computed(() => {
