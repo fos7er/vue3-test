@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <HelloWorld />
+      <Controls/>
     </v-main>
   </v-app>
 </template>
