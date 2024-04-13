@@ -5,6 +5,7 @@
         <v-btn-group>
           <v-btn
             v-for="item in buttons"
+            @click="clickHandler(item.id)"
           >
             {{ item.name }}
           </v-btn>
@@ -15,13 +16,21 @@
 </template>
 
 <script setup lang="ts">
-  import { useSpecialisationStore } from '@/store/specialisation'
+  import type { specialisation } from '../types'
   import { computed, ComputedRef } from 'vue'
-  import { specialisation } from '../types'
+  import { useSpecialisationStore } from '@/store/specialisation'
 
   const store = useSpecialisationStore()
   // вот тут не понял почему IDE не подсвечивает правильный тип пришлось еще раз типизировать
-  const buttons:ComputedRef<specialisation[]> = computed(() => store.list)
+  const buttons: ComputedRef<specialisation[]> = computed(() => store.list)
   const { getList } = store
   getList()
+
+  const emit = defineEmits<{
+    'update:modelValue': [id: number]
+  }>()
+
+  const clickHandler = (id: number) => {
+    emit('update:modelValue', id)
+  }
 </script>
