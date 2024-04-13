@@ -7,6 +7,7 @@
             v-for="item in buttons"
           >
             {{ item.name }}
+            {{item}}
           </v-btn>
         </v-btn-group>
       </v-col>
@@ -15,11 +16,13 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue'
-  import { specialisation } from '@/types'
-  const buttons: specialisation[] = reactive([{ id: 1, name: 'терапевт' }, { id: 2, name: 'ЛОР' }, {
-    id: 3,
-    name: 'окулист'
-  }])
 
+  import { useSpecialisationStore } from '@/store/specialisation'
+  import { computed } from 'vue'
+
+  const store = useSpecialisationStore()
+  const buttons = computed(() => store.list)
+  const { getList } = store
+
+  getList()
 </script>
