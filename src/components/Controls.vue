@@ -5,6 +5,11 @@
         <v-btn-group class="flex-wrap justify-content-center justify-center">
           <v-btn
             class="mx-2"
+            @click="clickHandler(null)"
+          >Все
+          </v-btn>
+          <v-btn
+            class="mx-2"
             v-for="item in buttons"
             @click="clickHandler(item.id)"
           >
@@ -28,10 +33,10 @@
   getList()
 
   const emit = defineEmits<{
-    'update:modelValue': [id: number]
+    'update:modelValue': [id: number | null]
   }>()
 
-  const clickHandler = (id: number) => {
+  const clickHandler = (id: number | null) => {
     emit('update:modelValue', id)
   }
 </script>
