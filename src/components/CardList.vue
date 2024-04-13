@@ -27,7 +27,7 @@
   //endregion
 
   //region filer
-  const selectedSpecialization: Ref<number> = ref(null)
+  const selectedSpecialization: Ref<number | null> = ref(null)
 
   const sorted = computed(() => {
     const result = new Map<number, number[]>()
