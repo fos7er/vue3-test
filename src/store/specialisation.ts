@@ -1,8 +1,8 @@
-import { defineStore } from 'pinia'
-import type { Ref } from 'vue'
-import { ref } from 'vue'
-import type { specialisation } from '../types'
 import file from '@/mocks/specialization.json'
+import type { Ref } from 'vue'
+import type { specialisation } from '../types'
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 export const useSpecialisationStore = defineStore('specialization', () => {
 
