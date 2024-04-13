@@ -2,8 +2,9 @@
   <v-container>
     <v-row>
       <v-col class="pa-2">
-        <v-btn-group>
+        <v-btn-group class="flex-wrap justify-content-center justify-center">
           <v-btn
+            class="mx-2"
             v-for="item in buttons"
             @click="clickHandler(item.id)"
           >
