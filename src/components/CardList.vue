@@ -16,11 +16,15 @@
   import { ref } from 'vue'
   import { useDoctorStore } from '@/store/doctor'
 
+  //region getList
   const store = useDoctorStore()
   // вот тут не понял почему IDE не подсвечивает правильный тип пришлось еще раз типизировать
   const cards:ComputedRef<doctor[]> = computed(() => store.list)
   const { getList } = store
   getList()
+  //endregion
+
+
 
   const selectedSpecialisation = ref(null)
 </script>
