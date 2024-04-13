@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-
   import { useSpecialisationStore } from '@/store/specialisation'
   import { computed, ComputedRef } from 'vue'
   import { specialisation } from '../types'

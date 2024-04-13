@@ -19,7 +19,7 @@
     ></v-img>
 
     <v-card-item>
-      <v-card-title>{{item.name}}</v-card-title>
+      <v-card-title>{{item.lastName}} {{item.firstName}} {{item.middleName}}</v-card-title>
       <v-card-subtitle>
       </v-card-subtitle>
     </v-card-item>
@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-  import { doctor } from '@/types'
+  import { doctor } from '../types'
   const props = defineProps<{
     item: doctor
   }>()

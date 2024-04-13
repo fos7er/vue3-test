@@ -8,8 +8,14 @@
   </v-container>
 </template>
 
-<script setup>
-  import { reactive } from 'vue'
+<script setup lang="ts">
+  import { useDoctorStore } from '@/store/doctor'
+  import { computed, ComputedRef } from 'vue'
+  import { doctor } from '../types'
 
-  const cards = reactive([{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"},{name:"Иванов Иван"}])
+  const store = useDoctorStore()
+  // вот тут не понял почему IDE не подсвечивает правильный тип пришлось еще раз типизировать
+  const cards:ComputedRef<doctor[]> = computed(() => store.list)
+  const { getList } = store
+  getList()
 </script>
