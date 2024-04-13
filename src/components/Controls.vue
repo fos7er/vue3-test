@@ -7,7 +7,6 @@
             v-for="item in buttons"
           >
             {{ item.name }}
-            {{item}}
           </v-btn>
         </v-btn-group>
       </v-col>
@@ -18,11 +17,12 @@
 <script setup lang="ts">
 
   import { useSpecialisationStore } from '@/store/specialisation'
-  import { computed } from 'vue'
+  import { computed, ComputedRef } from 'vue'
+  import { specialisation } from '../types'
 
   const store = useSpecialisationStore()
-  const buttons = computed(() => store.list)
+  // вот тут не понял почему IDE не подсвечивает правильный тип пришлось еще раз типизировать
+  const buttons:ComputedRef<specialisation[]> = computed(() => store.list)
   const { getList } = store
-
   getList()
 </script>
