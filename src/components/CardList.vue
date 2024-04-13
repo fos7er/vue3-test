@@ -20,8 +20,6 @@
 
   //region getList
   const store = useDoctorStore()
-  // вот тут не понял почему IDE не подсвечивает правильный тип, пришлось еще раз типизировать
-  const cards: ComputedRef<doctor[]> = computed(() => store.list)
   const { getList } = store
   getList()
   //endregion
@@ -48,13 +46,13 @@
 
       if (indexes && indexes.length) {
         indexes.forEach(index => {
-          result.push(cards.value[index])
+          result.push(store.list[index])
         })
       }
 
       return result
     } else {
-      return cards.value
+      return store.list
     }
   })
   //endregion
