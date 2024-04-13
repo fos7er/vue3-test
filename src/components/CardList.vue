@@ -1,8 +1,9 @@
 <template>
   <v-container>
-    {{ selectedSpecialization }}
-    {{ sorted }}
-    <Controls v-model="selectedSpecialization"/>
+    <Controls
+      v-model="selectedSpecialization"
+      :available="availableSpecializations"
+    />
     <v-row>
       <v-col v-for="item in filteredCards" cols="12" sm="6" md="4" xl="3">
         <Card :item="item"/>
@@ -29,7 +30,7 @@
   const selectedSpecialization: Ref<number> = ref(null)
 
   const sorted = computed(() => {
-    const result = new Map()
+    const result = new Map<number, number[]>()
 
     store.list.forEach((doctor: doctor, index: number) => {
       doctor.specializationList.forEach((item: specialization) => {
@@ -43,9 +44,9 @@
   const filteredCards = computed(() => {
     if (selectedSpecialization.value) {
       const result: doctor[] = []
-      const indexes:number[] = sorted.value.get(selectedSpecialization.value)
+      const indexes: number[] = sorted.value.get(selectedSpecialization.value)
       if (indexes && indexes.length) {
-        indexes.forEach( index => {
+        indexes.forEach(index => {
           result.push(cards.value[index])
         })
         return result
@@ -56,4 +57,8 @@
   })
 
   //endregion
+
+  const availableSpecializations: ComputedRef<number[]> = computed(() => {
+    return Array.from(sorted.value.keys())
+  })
 </script>
