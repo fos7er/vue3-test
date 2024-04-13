@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-  import { specialization } from '../types'
   import { computed, ComputedRef } from 'vue'
+  import { specialization } from '../types'
   import { useSpecializationStore } from '@/store/specialization'
 
   const props = defineProps<{
