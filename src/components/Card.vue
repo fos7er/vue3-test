@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-  import { doctor } from '../types'
+  import { doctor } from '@/types'
   const props = defineProps<{
     item: doctor
   }>()

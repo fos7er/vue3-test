@@ -1,12 +1,11 @@
 import file from '@/mocks/doctor.json'
 import type { doctor } from '../types'
-import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useDoctorStore = defineStore('doctor', () => {
 
-  const list: Ref<doctor[]> = ref([])
+  const list = ref<doctor[]>([])
 
   async function getList () {
     list.value = await get()

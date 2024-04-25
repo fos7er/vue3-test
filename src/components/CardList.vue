@@ -13,10 +13,10 @@
 </template>
 
 <script setup lang="ts">
-  import type { doctor, specialization } from '../types'
-  import type { Ref } from 'vue'
-  import { computed, ComputedRef, ref } from 'vue'
+  import type { doctor, specialization } from '@/types'
+  import { computed, ref } from 'vue'
   import { useDoctorStore } from '@/store/doctor'
+  import Card from '@/components/Card'
 
   //region getList
   const store = useDoctorStore()
@@ -25,7 +25,7 @@
   //endregion
 
   //region filer
-  const selectedSpecialization: Ref<number | null> = ref(null)
+  const selectedSpecialization = ref<number | null>(null)
 
   const sorted = computed(() => {
     const result = new Map<number, number[]>()
@@ -39,9 +39,9 @@
     return result
   })
 
-  const filteredCards = computed(() => {
+  const filteredCards = computed<doctor[]>(() => {
     if (selectedSpecialization.value) {
-      const result: doctor[] = []
+      const result = []
       const indexes: number[] = sorted.value.get(selectedSpecialization.value)
 
       if (indexes && indexes.length) {
@@ -57,7 +57,7 @@
   })
   //endregion
 
-  const availableSpecializations: ComputedRef<number[]> = computed(() => {
+  const availableSpecializations = computed<number[]>(() => {
     return Array.from(sorted.value.keys())
   })
 </script>

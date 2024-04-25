@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ComputedRef } from 'vue'
+  import { computed } from 'vue'
   import { specialization } from '../types'
   import { useSpecializationStore } from '@/store/specialization'
 
@@ -32,16 +32,15 @@
   }>()
 
   const store = useSpecializationStore()
-  // вот тут не понял почему IDE не подсвечивает правильный тип, пришлось еще раз типизировать
-  const buttons: ComputedRef<specialization[]> = computed(() => store.list)
+  const buttons = computed<specialization[]>(() => store.list)
   const { getList } = store
   getList()
 
   const emit = defineEmits<{
-    'update:modelValue': [id: number | null]
+    (e: 'update:modelValue', id: number | null): void
   }>()
 
-  const clickHandler = (id: number | null) => {
+  const clickHandler = (id) => {
     emit('update:modelValue', id)
   }
 
