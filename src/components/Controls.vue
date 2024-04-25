@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { specialization } from '../types'
+  import { specialization } from '@/types'
   import { useSpecializationStore } from '@/store/specialization'
 
   const props = defineProps<{

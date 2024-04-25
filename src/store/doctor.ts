@@ -1,5 +1,5 @@
 import file from '@/mocks/doctor.json'
-import type { doctor } from '../types'
+import type { doctor } from '@/types'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 

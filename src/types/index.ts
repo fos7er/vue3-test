@@ -1,6 +1,6 @@
 export interface specialization {
   id: number
-  name: string
+  name?: string
 }
 
 export interface doctor {
